@@ -105,6 +105,14 @@ with open(f'{work_dir}/ID_table.csv', 'r') as ID_table:
                                                {rawdata}/L04/{flowcell}_L04_{barcode2}_{i}.fq.gz \
                                                 > {work_dir}/{ID}_{i}.fq",
                                                 shell=True)
+            else:
+                barcode1 = s[1]
+                subprocess.check_output(f"zcat  {rawdata}/L01/{flowcell}_L01_{barcode1}_{i}.fq.gz \
+                                               {rawdata}/L02/{flowcell}_L02_{barcode1}_{i}.fq.gz \
+                                               {rawdata}/L03/{flowcell}_L03_{barcode1}_{i}.fq.gz \
+                                               {rawdata}/L04/{flowcell}_L04_{barcode1}_{i}.fq.gz \
+                                                > {work_dir}/{ID}_{i}.fq",
+                                                shell=True)
         print(s)
         print('TRIMMING ID  ', ID)
         trimming(work_dir, ID)
